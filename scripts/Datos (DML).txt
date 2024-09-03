@@ -1,0 +1,34 @@
+-- Insertar datos en tabla Clientes
+INSERT INTO Clientes (nombre, apellido, telefono, direccion, email, fecha_registro)
+VALUES 
+    ('María', 'López', '5551234567', 'Av. Siempreviva 123', 'maria@example.com', '2023-11-22'),
+    ('Pedro', 'García', '5559876543', 'Calle Sesamo 456', 'pedro@example.com', '2024-01-05'),
+    ('Ana', 'Rodríguez', '5553216549', 'Calle de las Flores 789', 'ana@example.com', '2023-09-15');
+
+-- Insertar datos en tabla Mascotas
+INSERT INTO Mascotas (nombre_mascota, especie, raza, fecha_nacimiento, id_cliente)
+VALUES
+    ('Lucas', 'Perro', 'Labrador', '2022-03-10', 1),
+    ('Minina', 'Gato', 'Siamés', '2021-05-20', 2),
+    ('Rocky', 'Perro', 'Italiano', '2020-11-05', 3);
+
+-- Insertar datos en tabla Visitas
+INSERT INTO Visitas (id_mascota, fecha_visita, motivo_visita, diagnostico, tratamiento)
+VALUES
+    (1, '2023-12-01', 'Vacunación', 'Todo en orden', 'Vacuna antirrábica'),
+    (2, '2024-02-15', 'Vómitos', 'Gastroenteritis', 'Dieta blanda y medicamentos'),
+    (3, '2023-10-20', 'Revisión rutinaria', 'Saludable', 'Ninguno');
+
+-- Insertar datos en tabla Servicios
+INSERT INTO Servicios (nombre_servicio, precio)
+VALUES
+    ('Consulta básica', 25.00),
+    ('Vacunación', 30.00),
+    ('Esterilización', 150.00);
+
+-- Insertar datos en tabla Visitas_Servicios
+INSERT INTO Visitas_Servicios (id_visita, id_servicio, cantidad)
+VALUES
+    (1, 2, 1),  -- Visita 1: Vacunación (1 dosis)
+    (2, 1, 1),  -- Visita 2: Consulta básica
+    (3, 1, 1);  -- Visita 3: Consulta básica
