@@ -1,0 +1,53 @@
+-- Crear base de datos
+CREATE DATABASE IF NOT EXISTS veterinaria;
+USE veterinaria;
+
+-- Crear tabla Clientes
+CREATE TABLE IF NOT EXISTS Clientes (
+    id_cliente INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(50) NOT NULL,
+    apellido VARCHAR(50) NOT NULL,
+    telefono VARCHAR(20) NOT NULL,
+    direccion TEXT,
+    email VARCHAR(100) UNIQUE,
+    fecha_registro DATE DEFAULT CURDATE()
+);
+
+-- Crear tabla Mascotas
+CREATE TABLE IF NOT EXISTS Mascotas (
+    id_mascota INT PRIMARY KEY AUTO_INCREMENT,
+    nombre_mascota VARCHAR(50) NOT NULL,
+    especie ENUM('Perro', 'Gato', 'Otro') NOT NULL,
+    raza VARCHAR(50),
+    fecha_nacimiento DATE,
+    id_cliente INT,
+    FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente)
+);
+
+-- Crear tabla Visitas
+CREATE TABLE IF NOT EXISTS Visitas (
+    id_visita INT PRIMARY KEY AUTO_INCREMENT,
+    id_mascota INT,
+    fecha_visita DATE NOT NULL,
+    motivo_visita TEXT,
+    diagnostico TEXT,
+    tratamiento TEXT,
+    FOREIGN KEY (id_mascota) REFERENCES Mascotas(id_mascota)
+);
+
+-- Crear tabla Servicios
+CREATE TABLE IF NOT EXISTS Servicios (
+    id_servicio INT PRIMARY KEY AUTO_INCREMENT,
+    nombre_servicio VARCHAR(50) NOT NULL,
+    precio DECIMAL(10,2) NOT NULL
+);
+
+-- Crear tabla Visitas_Servicios
+CREATE TABLE IF NOT EXISTS Visitas_Servicios (
+    id_visita_servicio INT PRIMARY KEY AUTO_INCREMENT,
+    id_visita INT,
+    id_servicio INT,
+    cantidad INT DEFAULT 1,
+    FOREIGN KEY (id_visita) REFERENCES Visitas(id_visita),
+    FOREIGN KEY (id_servicio) REFERENCES Servicios(id_servicio)
+);
