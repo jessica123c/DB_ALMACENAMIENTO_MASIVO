@@ -1,0 +1,12 @@
+-- Consultar todas las visitas y los servicios realizados por cada mascota
+SELECT 
+    m.nombre_mascota,
+    v.fecha_visita,
+    s.nombre_servicio,
+    vs.cantidad,
+    (s.precio * vs.cantidad) AS costo_total
+FROM Mascotas m
+JOIN Visitas v ON m.id_mascota = v.id_mascota
+JOIN Visitas_Servicios vs ON v.id_visita = vs.id_visita
+JOIN Servicios s ON vs.id_servicio = s.id_servicio
+ORDER BY m.nombre_mascota, v.fecha_visita;

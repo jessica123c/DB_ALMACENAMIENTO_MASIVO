@@ -1,0 +1,14 @@
+--  Calcular el ingreso total por servicio en un mes determinado.
+SELECT s.nombre_servicio, SUM(vs.cantidad * s.precio) AS total_ingresos
+FROM Visitas_Servicios vs
+INNER JOIN Servicios s ON vs.id_servicio = s.id_servicio
+INNER JOIN Visitas v ON vs.id_visita = v.id_visita
+WHERE MONTH(v.fecha_visita) = 02 AND YEAR(v.fecha_visita) = 2024
+GROUP BY s.nombre_servicio;
+-- consultar el numero de visistas por tipo de servicio
+SELECT 
+    s.nombre_servicio,
+    COUNT(vs.id_visita_servicio) AS numero_de_visitas
+FROM Servicios s
+JOIN Visitas_Servicios vs ON s.id_servicio = vs.id_servicio
+GROUP BY s.id_servicio;
