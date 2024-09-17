@@ -1,5 +1,5 @@
--- NOMBRES DE LOS CLIENTES CON RAZA LABRADOR y elnombre de la mascota
-SELECT c.nombre, c.apellido, c.direccion, m.nombre_mascota
+-- NOMBRES DE LOS CLIENTES CON RAZA ITALIANO y elnombre de la mascota
+SELECT c.nombre, c.apellido, c.direccion, m.nombre_mascota, m.raza
 FROM Clientes c
 INNER JOIN Mascotas m ON c.id_cliente = m.id_cliente
-WHERE m.raza = 'Labrador';
+WHERE m.raza = 'italiano';
