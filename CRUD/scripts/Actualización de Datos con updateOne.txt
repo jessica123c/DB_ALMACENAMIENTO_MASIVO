@@ -1,0 +1,4 @@
+db.libros.updateOne(
+  { _id: 1 }, // Coincidencia puntual por _id del libro
+  { $set: { autor_id: 2 } } // Cambiamos el autor a Isabel Allende
+);
