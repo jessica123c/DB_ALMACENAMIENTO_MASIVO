@@ -1,0 +1,5 @@
+db.categorias.updateOne(
+  { _id: 3 }, // Coincidencia por ID de la categoría
+  { $setOnInsert: { nombre: "Ciencia Ficción" } }, // Si no existe, insertar
+  { upsert: true }
+);
