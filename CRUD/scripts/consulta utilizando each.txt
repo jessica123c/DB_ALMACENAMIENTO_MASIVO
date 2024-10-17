@@ -1,0 +1,4 @@
+db.compras.updateOne(
+  { _id: 1 }, // Coincidencia por ID de la compra
+  { $addToSet: { libros_ids: { $each: [3] } } } // Agregamos un nuevo libro a la lista
+);
